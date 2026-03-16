@@ -32,11 +32,46 @@ export function LoginForm() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
-      {/* Subtle background pattern */}
+    <div className="min-h-screen flex items-center justify-center bg-background p-4 relative overflow-hidden">
+      {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-to-bl from-primary/5 to-transparent rounded-full" />
-        <div className="absolute -bottom-1/2 -left-1/2 w-full h-full bg-gradient-to-tr from-primary/5 to-transparent rounded-full" />
+        {/* Gradient mesh background */}
+        <div className="absolute inset-0 bg-gradient-mesh" />
+        
+        {/* Subtle dot pattern */}
+        <div className="absolute inset-0 bg-dot-pattern animate-grid-fade" />
+        
+        {/* Floating blobs */}
+        <div className="absolute top-20 left-20 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-blob" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-blob" style={{ animationDelay: "-4s" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/3 rounded-full blur-3xl animate-pulse-glow" />
+        
+        {/* Floating medical icons/shapes */}
+        <div className="absolute top-1/4 left-[15%] opacity-10">
+          <svg className="w-16 h-16 text-primary animate-float" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+          </svg>
+        </div>
+        <div className="absolute bottom-1/4 right-[20%] opacity-10">
+          <svg className="w-12 h-12 text-primary animate-float-delayed" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H6v-2h4V7h2v4h4v2h-4v4z"/>
+          </svg>
+        </div>
+        <div className="absolute top-[60%] left-[10%] opacity-10">
+          <svg className="w-10 h-10 text-primary animate-float-slow" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z"/>
+          </svg>
+        </div>
+        
+        {/* ECG line animation */}
+        <svg className="absolute bottom-[30%] left-0 w-full h-24 opacity-5" viewBox="0 0 1200 100" preserveAspectRatio="none">
+          <path 
+            className="animate-ecg stroke-primary" 
+            fill="none" 
+            strokeWidth="2"
+            d="M0,50 L200,50 L220,50 L240,20 L260,80 L280,30 L300,70 L320,50 L400,50 L600,50 L620,50 L640,20 L660,80 L680,30 L700,70 L720,50 L800,50 L1000,50 L1020,50 L1040,20 L1060,80 L1080,30 L1100,70 L1120,50 L1200,50"
+          />
+        </svg>
       </div>
 
       <div className="w-full max-w-[400px] relative">

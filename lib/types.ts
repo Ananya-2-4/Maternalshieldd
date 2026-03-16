@@ -6,6 +6,7 @@ export interface Patient {
   contactNumber: string
   familyHistoryPreeclampsia: boolean
   firstTimePregnancy: boolean
+  preeclampsia: boolean
   riskScore: number
   doctorInCharge: string
   visits: PatientVisit[]

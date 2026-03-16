@@ -52,6 +52,12 @@ export function PatientTile({ patient }: PatientTileProps) {
           <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-secondary text-secondary-foreground">
             {patient.age} yrs
           </span>
+          {/* Preeclampsia Indicator */}
+          {patient.preeclampsia && (
+            <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-700">
+              PE+
+            </span>
+          )}
           {/* Risk Badge */}
           <span
             className={cn(
