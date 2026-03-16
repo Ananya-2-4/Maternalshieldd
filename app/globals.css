@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  /* Clinical Professional Color Palette */
+  --background: 0 0% 100%;
+  --foreground: 215 25% 15%;
+  
+  /* Hospital Blue Primary */
+  --primary: 210 100% 35%;
+  --primary-foreground: 0 0% 100%;
+  
+  /* Light gray accents */
+  --secondary: 210 20% 97%;
+  --secondary-foreground: 215 25% 27%;
+  
+  /* Muted backgrounds */
+  --muted: 210 20% 96%;
+  --muted-foreground: 215 15% 46%;
+  
+  /* Accent colors */
+  --accent: 210 20% 96%;
+  --accent-foreground: 215 25% 27%;
+  
+  /* Card styling */
+  --card: 0 0% 100%;
+  --card-foreground: 215 25% 15%;
+  
+  /* Borders */
+  --border: 215 20% 91%;
+  --input: 215 20% 91%;
+  --ring: 210 100% 35%;
+  
+  /* Risk Colors */
+  --risk-critical: 0 84% 60%;
+  --risk-high: 25 95% 53%;
+  --risk-elevated: 45 93% 47%;
+  --risk-stable: 142 71% 45%;
+  
+  /* Radius */
+  --radius: 0.75rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+}
+
+/* Clinical card styling */
+.clinical-card {
+  background: hsl(var(--card));
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid hsl(var(--border));
+}
+
+/* Risk indicator colors */
+.risk-critical {
+  background-color: hsl(var(--risk-critical) / 0.1);
+  border-left: 4px solid hsl(var(--risk-critical));
+  color: hsl(var(--risk-critical));
+}
+
+.risk-high {
+  background-color: hsl(var(--risk-high) / 0.1);
+  border-left: 4px solid hsl(var(--risk-high));
+  color: hsl(var(--risk-high));
+}
+
+.risk-elevated {
+  background-color: hsl(var(--risk-elevated) / 0.1);
+  border-left: 4px solid hsl(var(--risk-elevated));
+  color: hsl(var(--risk-elevated));
+}
+
+.risk-stable {
+  background-color: hsl(var(--risk-stable) / 0.1);
+  border-left: 4px solid hsl(var(--risk-stable));
+  color: hsl(var(--risk-stable));
+}
+
+/* Smooth transitions */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+}
