@@ -70,6 +70,94 @@
   background: hsl(var(--muted-foreground) / 0.5);
 }
 
+/* ===== ENTRANCE ANIMATIONS ===== */
+
+/* Fade in up animation */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in scale animation */
+@keyframes fade-in-scale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Slide in from left */
+@keyframes slide-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide in from right */
+@keyframes slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Staggered children animation */
+@keyframes stagger-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fade-in-scale 0.5s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.5s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.5s ease-out forwards;
+}
+
+/* Stagger delays for children */
+.stagger-1 { animation-delay: 0.1s; opacity: 0; }
+.stagger-2 { animation-delay: 0.2s; opacity: 0; }
+.stagger-3 { animation-delay: 0.3s; opacity: 0; }
+.stagger-4 { animation-delay: 0.4s; opacity: 0; }
+.stagger-5 { animation-delay: 0.5s; opacity: 0; }
+.stagger-6 { animation-delay: 0.6s; opacity: 0; }
+
+/* ===== PULSE AND GLOW ANIMATIONS ===== */
+
 /* Pulse animation for alerts */
 @keyframes pulse-ring {
   0% {
@@ -86,9 +174,55 @@
   }
 }
 
+/* Subtle pulse glow */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+/* Glow pulse for buttons */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px hsl(210 100% 35% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px hsl(210 100% 35% / 0.5), 0 0 30px hsl(210 100% 35% / 0.3);
+  }
+}
+
+/* Border glow animation */
+@keyframes border-glow {
+  0%, 100% {
+    border-color: hsl(210 100% 35% / 0.2);
+  }
+  50% {
+    border-color: hsl(210 100% 35% / 0.6);
+  }
+}
+
 .animate-pulse-ring {
   animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-border-glow {
+  animation: border-glow 2s ease-in-out infinite;
+}
+
+/* ===== FLOATING ANIMATIONS ===== */
 
 /* Subtle floating animation */
 @keyframes float {
@@ -118,35 +252,18 @@
   }
 }
 
-/* Gradient blob animation */
-@keyframes blob {
+@keyframes float-gentle {
   0%, 100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-5px) translateX(3px);
   }
   50% {
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    transform: translateY(-8px) translateX(0px);
   }
-}
-
-/* Subtle pulse glow */
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.6;
-    transform: scale(1.05);
-  }
-}
-
-/* Grid pattern fade */
-@keyframes grid-fade {
-  0%, 100% {
-    opacity: 0.03;
-  }
-  50% {
-    opacity: 0.06;
+  75% {
+    transform: translateY(-5px) translateX(-3px);
   }
 }
 
@@ -162,17 +279,45 @@
   animation: float-slow 10s ease-in-out infinite;
 }
 
+.animate-float-gentle {
+  animation: float-gentle 5s ease-in-out infinite;
+}
+
+/* ===== BLOB AND MORPH ANIMATIONS ===== */
+
+/* Gradient blob animation */
+@keyframes blob {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+}
+
+@keyframes blob-spin {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(0deg);
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(360deg);
+  }
+}
+
 .animate-blob {
   animation: blob 8s ease-in-out infinite;
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
+.animate-blob-spin {
+  animation: blob-spin 20s ease-in-out infinite;
 }
 
-.animate-grid-fade {
-  animation: grid-fade 8s ease-in-out infinite;
-}
+/* ===== HEARTBEAT AND MEDICAL ANIMATIONS ===== */
 
 /* Heartbeat animation for medical feel */
 @keyframes heartbeat {
@@ -180,21 +325,27 @@
     transform: scale(1);
   }
   14% {
-    transform: scale(1.1);
+    transform: scale(1.15);
   }
   28% {
     transform: scale(1);
   }
   42% {
-    transform: scale(1.1);
+    transform: scale(1.15);
   }
   70% {
     transform: scale(1);
   }
 }
 
-.animate-heartbeat {
-  animation: heartbeat 2s ease-in-out infinite;
+/* Subtle heartbeat */
+@keyframes heartbeat-subtle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 /* ECG line animation */
@@ -207,10 +358,34 @@
   }
 }
 
+/* ECG continuous scroll */
+@keyframes ecg-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+.animate-heartbeat-subtle {
+  animation: heartbeat-subtle 2s ease-in-out infinite;
+}
+
 .animate-ecg {
   stroke-dasharray: 1000;
   animation: ecg-line 3s linear infinite;
 }
+
+.animate-ecg-scroll {
+  animation: ecg-scroll 4s linear infinite;
+}
+
+/* ===== LOADING ANIMATIONS ===== */
 
 /* Shimmer effect for loading states */
 @keyframes shimmer {
@@ -219,6 +394,26 @@
   }
   100% {
     background-position: 200% 0;
+  }
+}
+
+/* Spinner animation */
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Bounce loading */
+@keyframes bounce-loading {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
   }
 }
 
@@ -233,6 +428,90 @@
   animation: shimmer 2s infinite;
 }
 
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+/* ===== GRID AND PATTERN ANIMATIONS ===== */
+
+/* Grid pattern fade */
+@keyframes grid-fade {
+  0%, 100% {
+    opacity: 0.03;
+  }
+  50% {
+    opacity: 0.06;
+  }
+}
+
+/* Moving gradient */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-grid-fade {
+  animation: grid-fade 8s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* ===== COUNTER ANIMATION ===== */
+
+@keyframes count-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-count-up {
+  animation: count-up 0.5s ease-out forwards;
+}
+
+/* ===== RIPPLE ANIMATION ===== */
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.animate-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-ripple::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, hsl(210 100% 35% / 0.3) 0%, transparent 70%);
+  transform: scale(0);
+  animation: ripple 0.6s ease-out;
+}
+
+/* ===== BACKGROUND PATTERNS ===== */
+
 /* Gradient mesh background */
 .bg-gradient-mesh {
   background-image: 
@@ -242,6 +521,19 @@
     radial-gradient(at 80% 50%, hsl(220 100% 95% / 0.3) 0px, transparent 50%),
     radial-gradient(at 0% 100%, hsl(200 100% 95% / 0.4) 0px, transparent 50%),
     radial-gradient(at 80% 100%, hsl(210 100% 98% / 0.3) 0px, transparent 50%);
+}
+
+/* Animated gradient mesh */
+.bg-gradient-mesh-animated {
+  background: linear-gradient(
+    -45deg,
+    hsl(210 100% 97%),
+    hsl(200 100% 97%),
+    hsl(180 100% 97%),
+    hsl(210 100% 97%)
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
 }
 
 /* Dot pattern background */
@@ -256,4 +548,65 @@
     linear-gradient(hsl(210 15% 90% / 0.5) 1px, transparent 1px),
     linear-gradient(90deg, hsl(210 15% 90% / 0.5) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+/* Moving particles effect */
+.bg-particles {
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, hsl(210 100% 35% / 0.15), transparent),
+    radial-gradient(2px 2px at 40px 70px, hsl(210 100% 35% / 0.1), transparent),
+    radial-gradient(2px 2px at 50px 160px, hsl(210 100% 35% / 0.15), transparent),
+    radial-gradient(2px 2px at 90px 40px, hsl(210 100% 35% / 0.1), transparent),
+    radial-gradient(2px 2px at 130px 80px, hsl(210 100% 35% / 0.15), transparent),
+    radial-gradient(2px 2px at 160px 120px, hsl(210 100% 35% / 0.1), transparent);
+  background-size: 200px 200px;
+  animation: float-slow 20s ease-in-out infinite;
+}
+
+/* ===== HOVER EFFECTS ===== */
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px -12px hsl(210 100% 35% / 0.15);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px hsl(210 100% 35% / 0.2);
+}
+
+/* ===== CARD SHADOWS ===== */
+
+.shadow-card {
+  box-shadow: 
+    0 1px 3px hsl(210 15% 15% / 0.04),
+    0 4px 12px hsl(210 15% 15% / 0.06);
+}
+
+.shadow-card-hover {
+  box-shadow: 
+    0 4px 8px hsl(210 15% 15% / 0.06),
+    0 12px 32px hsl(210 15% 15% / 0.1);
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+.glass-effect {
+  background: hsl(0 0% 100% / 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, hsl(210 100% 35%), hsl(200 100% 45%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
