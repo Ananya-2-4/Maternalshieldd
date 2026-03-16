@@ -56,7 +56,7 @@ export function PatientRegistry() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div>
+      <div className="animate-fade-in-up">
         <h1 className="text-2xl font-semibold text-foreground">Patient Registry</h1>
         <p className="text-muted-foreground mt-1">
           Overview of antenatal patients. Select a patient to view their Bi-LSTM predictive risk trajectory.
@@ -69,23 +69,27 @@ export function PatientRegistry() {
           label="Total Patients"
           value={stats.total}
           icon={<Users size={18} className="text-primary" />}
+          delay={100}
         />
         <MetricCard
           label="High Risk"
           value={stats.highRisk}
           variant="critical"
           icon={<AlertTriangle size={18} className="text-red-500" />}
+          delay={200}
         />
         <MetricCard
           label="Moderate Risk"
           value={stats.moderate}
           variant="warning"
           icon={<Activity size={18} className="text-orange-500" />}
+          delay={300}
         />
         <MetricCard
           label="Low Risk"
           value={stats.low}
           icon={<Activity size={18} className="text-green-500" />}
+          delay={400}
         />
       </div>
 
@@ -176,8 +180,8 @@ export function PatientRegistry() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredPatients.map((patient) => (
-            <PatientTile key={patient.id} patient={patient} />
+          {filteredPatients.map((patient, index) => (
+            <PatientTile key={patient.id} patient={patient} index={index} />
           ))}
         </div>
       )}
