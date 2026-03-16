@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Hospital Blue / Medica Theme */
+    --background: 210 20% 98%; /* #F8F9FA */
+    --foreground: 215 25% 15%; /* Dark slate for text */
+    
+    --card: 0 0% 100%; /* Pure white */
+    --card-foreground: 215 25% 15%;
+    
+    --primary: 210 100% 35%; /* Hospital Blue #0056b3 */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 215 25% 25%;
+    
+    --muted: 210 15% 93%;
+    --muted-foreground: 215 15% 45%;
+    
+    --accent: 210 100% 95%;
+    --accent-foreground: 210 100% 35%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 210 15% 90%;
+    --input: 210 15% 90%;
+    --ring: 210 100% 35%;
+    
+    /* Clinical Risk Colors */
+    --risk-critical: 0 84% 60%; /* Red */
+    --risk-high: 25 95% 55%; /* Orange */
+    --risk-moderate: 45 93% 50%; /* Yellow */
+    --risk-low: 142 76% 36%; /* Green */
+    
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* Custom scrollbar for clinical feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Pulse animation for alerts */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 hsl(0 84% 60% / 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px hsl(0 84% 60% / 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 hsl(0 84% 60% / 0);
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
