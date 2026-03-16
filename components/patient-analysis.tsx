@@ -130,6 +130,17 @@ export function PatientAnalysis({ patientId }: PatientAnalysisProps) {
             <Baby size={14} />
             {patient.firstTimePregnancy ? "First Pregnancy" : "Multipara"}
           </span>
+          <span
+            className={cn(
+              "inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium",
+              patient.preeclampsia
+                ? "bg-red-100 text-red-700"
+                : "bg-green-100 text-green-700"
+            )}
+          >
+            <HeartPulse size={14} />
+            {patient.preeclampsia ? "Preeclampsia: Diagnosed" : "Preeclampsia: None"}
+          </span>
         </div>
       </div>
 
